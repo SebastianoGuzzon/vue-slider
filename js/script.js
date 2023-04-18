@@ -1,26 +1,67 @@
-export default {
-  data() {
-    return {
-      // Inserimento immagini
-      images: [
-        'https://images.hdqwalls.com/download/republic-of-games-strix-4k-nl-1336x768.jpg',
-        'https://mcdn.wallpapersafari.com/medium/27/97/vMhYDQ.png',
-        'https://www.proav.it/wp-content/uploads/2018/05/4K-HDR-2-768x492.jpg'
-      ],
-      activeIndex: 0,
-      translateX: 0
-    };
-  },
-  
-  // Controlli prev e next
-  methods: {
-    prevSlide() {
-      this.activeIndex = (this.activeIndex - 1 + this.images.length) % this.images.length;
-      this.translateX = -this.activeIndex * this.$refs.slide.offsetWidth;
+const { createApp } = Vue;
+
+createApp({
+
+    data(){
+        return{
+          // Inserimento delle 5 immagini 
+            counter: 0,
+            image: [
+                "",
+                "",
+                "",
+                "",
+                ""
+            ],
+            time: null,
+            hover: false
+        }  
     },
-    nextSlide() {
-      this.activeIndex = (this.activeIndex + 1) % this.images.length;
-      this.translateX = -this.activeIndex * this.$refs.slide.offsetWidth;
+
+    methods:{
+      // Controlli next o prev
+        changeImg(next){
+            if(next) this.counter++
+            else this.counter--
+
+            this.conditionCounter()
+        },
+
+        clickChange(index){
+            this.counter = index 
+        },
+
+        autoChange(){
+            this.time = setInterval(() => {
+                this.counter++
+                
+                this.conditionCounter()               
+            }, 3000);
+        },
+
+        over(){
+            this.hover = !this.hover
+
+            if(this.hover){
+                clearInterval(this.time)
+            }
+        },
+        // Autoplay immagini
+        out(){
+            this.hover = !this.hover
+            this.autoChange()
+        },
+
+        conditionCounter(){
+            if(this.counter > this.image.length - 1) this.counter = 0;
+            else if(this.counter < 0) this.counter = this.image.length - 1
+        }
+
+    },
+
+    mounted(){
+        this.autoChange();
     }
-  }
-};
+
+
+}).mount("#app")
