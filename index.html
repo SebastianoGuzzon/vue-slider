@@ -5,12 +5,28 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- Vue.js -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  
   <title>Vue Slider</title>
 </head>
+
 <body>
   
-  
-  
-  <script src="js/script.js"></script>
+  <!-- Slider immagini -->
+  <div class="slider">
+    <div class="slides" :style="{transform: 'translateX(' + translateX + 'px)'}">
+      <div class="slide" v-for="(image, index) in images" :key="index" :style="{backgroundImage: 'url(' + image + ')'}"></div>
+    </div>
+
+    <!-- Bottoni -->
+    <div class="controls">
+      <button @click="prevSlide">Prev</button>
+      <button @click="nextSlide">Next</button>
+    </div>
+  </div>
+
+  <script type="module" src="js/script.js"></script>
 </body>
 </html>
