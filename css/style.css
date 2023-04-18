@@ -6,27 +6,82 @@
 body{
   background-color: bisque;
 }
+.main-wrapper{
+  background-color: bisque;
+  width: 100vw;
+  height: 100vh;
+  display: flex;   
+  justify-content: center;
+  padding-top: 100px;
+}
 
-.slider {
+.container{
+  width: 70%;
+  height: 50%;
   position: relative;
-  overflow: hidden;
-}
-.slides {
   display: flex;
-  transition: transform 0.5s;
 }
-.slide {
+
+.carosello{
   width: 100%;
-  height: 400px;
-  background-size: cover;
-  background-position: center;
+  height: 100%;
 }
-.controls {
+
+.carosello img{
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+
+.container .gallery{
+  width: 30%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-right: 30px;
+}
+
+.gallery img{
+  width: 100%;
+  height: 40%;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 5px 5px 5px black;
+}
+
+.commands{
+  width: 20%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+}
+
+#nextArrow,
+#beforeArrow{
+  padding: 8px 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.856);
+  cursor: pointer;
   position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
 }
-button {
-  margin: 0 10px;
+
+#nextArrow{
+  left: 10%;
+  top: 90%;
+}
+
+#beforeArrow{
+  left: 10%;
+  top: 5%;
+}
+
+#nextArrow:hover,
+#beforeArrow:hover{
+  background-color: rgba(255, 255, 255, 0.448);
+  color: rgba(66, 141, 253, 0.306);
 }

@@ -19,9 +19,10 @@
 
         
     <div class="main-wrapper">
+
         <div class="container" @mouseover="over" @mouseout="out">
 
-
+            <!-- Comandi prev e next -->
             <div id="beforeArrow" @click="changeImg(false)">
                 <i class="fa-solid fa-arrow-up"></i>
             </div>
@@ -29,10 +30,11 @@
                 <i class="fa-solid fa-arrow-down"></i>
             </div>
 
-
+            <!-- Galleria immagini colonna -->
             <div class="gallery">
                 <img v-for="img,i in image"  :src="image[i]" alt="Immagine" @click="clickChange(i)" :class="{'special' : i === counter}">
             </div>
+            <!-- Immagini con autoplay on-click -->
             <div class="carosello">
                 <img :src="image[counter]" alt="Immagine">
             </div>
